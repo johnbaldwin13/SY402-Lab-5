@@ -28,24 +28,19 @@ logName = "log" + str(logTime)  + ".txt"
 for root, dirs, files in os.walk(".", topdown=False):
     for name in files:
         file = os.path.join(root, name)
-        print(file)
         f = open(logName,"a") #append to log file
         dateTime = datetime.datetime.now()
         f.write(file + ' ' + str(dateTime) + '\n')
         hash = hashlib.sha256(name.encode())
-        print(hash.hexdigest())
         dateTime = datetime.datetime.now()
         f.write("Hash: " + hash.hexdigest() + ' ' + str(dateTime) + '\n')
     for name in dirs:
         if name not in ignore:
             dir = os.path.join(root, name)
-            print(dir)
             dateTime = datetime.datetime.now()
             f.write(dir + ' ' + str(dateTime) + '\n')
 f.close()
 
-
-print("\n\n\n\n\n\n\n\n\n\n")
 print("******************************************************************************")
 print("******************************************************************************")
 print("******************************************************************************")
